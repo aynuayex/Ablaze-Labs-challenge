@@ -1,35 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router";
+import { RouterProvider } from "react-router/dom";
+import RootLayout from "./layout/root-layout";
+import HomePage from "./routes/Home";
+
+// import DashboardLayout from "./layouts/dashboard-layout";
+// import VehicleForm from "./routes/vehicle-form";
+// import DashboardPage, { vehiclesDataLoader } from "./routes/dashboard";
+// import ThemeContextProvider from "@/contexts/theme-context";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<RootLayout />}>
+        <Route index element={<HomePage />} />
+        {/* <Route path="/qr" element={<QR />} /> */}
+        {/* <Route path="/notifications" element={<QR />} /> */}
+        {/* <Route
+          path="sign-in"
+          element={
+            <div className="flex justify-center">
+              <SignIn />
+            </div>
+          }
+        />
+        <Route
+          path="sign-up"
+          element={
+            <div className="flex justify-center">
+              <SignUp />
+            </div>
+          }
+        /> */}
+      </Route>
+    ),
+    {
+      future: {
+        v7_relativeSplatPath: true,
+        v7_startTransition: true,
+        v7_fetcherPersist: true,
+        v7_normalizeFormMethod: true,
+        v7_partialHydration: true,
+        v7_skipActionErrorRevalidation: true,
+      },
+    }
+  );
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    // <ThemeContextProvider>
+      <RouterProvider
+        router={router}
+        // future={{
+        //   v7_startTransition: true,
+        // }}
+      />
+      // <Toaster />
+    // </ThemeContextProvider>
+  );
 }
 
-export default App
+export default App;
