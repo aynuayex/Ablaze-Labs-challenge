@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import qr from "@/assets/qr_code.svg";
-import coolicon from "@/assets/coolicon.svg";
+import notification from "@/assets/notification.svg";
 
 const NavigationHeader = () => {
   return (
@@ -20,7 +20,7 @@ const NavigationHeader = () => {
           to="/notifications"
           className="flex justify-center items-center rounded-[10px] border border-[#D7FFEA] bg-white w-[42px] h-[42px]"
         >
-          <img src={coolicon} alt="notification svg icon" />
+          <img src={notification} alt="notification svg icon" />
         </Link>
       </header>
     </div>

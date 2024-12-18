@@ -6,35 +6,22 @@ import {
 import { RouterProvider } from "react-router/dom";
 import RootLayout from "./layout/root-layout";
 import HomePage from "./routes/Home";
-
-// import DashboardLayout from "./layouts/dashboard-layout";
-// import VehicleForm from "./routes/vehicle-form";
-// import DashboardPage, { vehiclesDataLoader } from "./routes/dashboard";
-// import ThemeContextProvider from "@/contexts/theme-context";
+import Recent from "./routes/Recent";
+import NearBy from "./routes/NearBy";
+import Profile from "./routes/Profile";
+import Notifications from "./routes/Notifications";
+import Qr from "./routes/Qr";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <Route path="/" element={<RootLayout />}>
         <Route index element={<HomePage />} />
-        {/* <Route path="/qr" element={<QR />} /> */}
-        {/* <Route path="/notifications" element={<QR />} /> */}
-        {/* <Route
-          path="sign-in"
-          element={
-            <div className="flex justify-center">
-              <SignIn />
-            </div>
-          }
-        />
-        <Route
-          path="sign-up"
-          element={
-            <div className="flex justify-center">
-              <SignUp />
-            </div>
-          }
-        /> */}
+        <Route path="/recent" element={<Recent />} />
+        <Route path="/nearBy" element={<NearBy />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/notifications" element={<Notifications />} />
+        <Route path="/qr" element={<Qr />} />
       </Route>
     ),
     {
@@ -49,17 +36,7 @@ function App() {
     }
   );
 
-  return (
-    // <ThemeContextProvider>
-      <RouterProvider
-        router={router}
-        // future={{
-        //   v7_startTransition: true,
-        // }}
-      />
-      // <Toaster />
-    // </ThemeContextProvider>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
